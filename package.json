@@ -1,0 +1,20 @@
+{
+  "name": "gpt-vis-ssr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "render_vis.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "gpt-vis-cli": "./gpt-vis-cli"
+  }
+,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@antv/gpt-vis-ssr": "^0.1.8"
+  }
+}
