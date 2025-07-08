@@ -21,9 +21,10 @@ async function main() {
   try {
     const vis = await render(options);
     const buffer = vis.toBuffer();
-    process.stdout.write(buffer);
-    // console.log('Visualization rendered successfully. Output written to stdout.');
-    process.exit(0);
+    process.stdout.write(buffer, () => {
+      // console.log('Visualization rendered successfully. Output written to stdout.');
+      process.exit(0);
+    });
   } catch (error) {
     console.error('Error rendering visualization:', error.message);
     process.exit(1);
