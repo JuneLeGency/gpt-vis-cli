@@ -1,5 +1,7 @@
 # gpt-vis
 
+**English** | [简体中文](./README_zh-CN.md) | [日本語](./README_ja.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [Deutsch](./README_de.md)
+
 A Python wrapper for [gpt-vis-cli](https://github.com/connect-a-sketch/gpt-vis-cli), enabling programmatic and command-line chart generation.
 
 ## Installation
