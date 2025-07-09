@@ -17,18 +17,17 @@ def render(options: Dict[str, Any]) -> bytes:
         subprocess.CalledProcessError: If the 'gpt-vis-cli' process returns a non-zero exit code.
     """
     json_options = json.dumps(options)
-    cli_path = './gpt-vis-cli'
 
     try:
         process = subprocess.run(
-            [cli_path, json_options],
+            ['npx', '-y', 'gpt-vis-cli', json_options],
             capture_output=True,
             check=True,
             timeout=30
         )
         return process.stdout
     except FileNotFoundError:
-        print(f"Error: The executable '{cli_path}' was not found in the current directory.")
+        print(f"Error: The executable 'npx' was not found in the current directory.")
         raise
     except subprocess.CalledProcessError as e:
         print(f"Error executing gpt-vis-cli: {e}")

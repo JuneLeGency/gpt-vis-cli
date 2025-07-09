@@ -1,6 +1,6 @@
 import pytest
 import os
-from gpt_vis_api import render
+from gpt_vis.api import render
 
 def assert_image_equal(buffer: bytes, name: str):
     snapshot_dir = 'charts/__tests__/snapshot'

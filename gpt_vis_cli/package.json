@@ -1,5 +1,5 @@
 {
-  "name": "gpt-vis-ssr",
+  "name": "gpt-vis-cli",
   "version": "1.0.0",
   "description": "",
   "main": "render_vis.js",

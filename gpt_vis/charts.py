@@ -1,9 +1,7 @@
 import json
-import os
 import subprocess
-from typing import Any, Dict, List, Literal, Optional, Union
+from typing import List, Literal, Optional
 
-from dotenv import load_dotenv
 from pydantic import BaseModel, Field
 
 ChartType = Literal[
@@ -26,11 +24,9 @@ class Chart:
             **self.options.dict(exclude_none=True),
         }
         json_options = json.dumps(chart_options)
-        load_dotenv()
-        cli_path = os.getenv('CLI_PATH')
         try:
             process = subprocess.run(
-                [cli_path, json_options],
+                ['npx', '-y', 'gpt-vis-cli', json_options],
                 capture_output=True,
                 check=True
             )
@@ -38,7 +34,7 @@ class Chart:
                 f.write(process.stdout)
             print(f"Visualization saved to {self.output_path}")
         except FileNotFoundError:
-            print(f"Error: gpt-vis-cli not found at {cli_path}")
+            print(f"Error: npx command not found. Please ensure Node.js and npm are installed and in your PATH.")
         except subprocess.CalledProcessError as e:
             print(f"Error executing gpt-vis-cli: {e}")
             print(f"Stderr: {e.stderr.decode()}")
@@ -570,3 +566,95 @@ def render_area_chart(options: AreaChartOptions, output_path: str):
 
 def render_bar_chart(options: BarChartOptions, output_path: str):
     render_chart('bar', options, output_path)
+
+
+def render_boxplot_chart(options: BoxPlotOptions, output_path: str):
+    render_chart('boxplot', options, output_path)
+
+
+def render_column_chart(options: ColumnChartOptions, output_path: str):
+    render_chart('column', options, output_path)
+
+
+def render_district_map_chart(options: DistrictMapOptions, output_path: str):
+    render_chart('district-map', options, output_path)
+
+
+def render_dual_axes_chart(options: DualAxesOptions, output_path: str):
+    render_chart('dual-axes', options, output_path)
+
+
+def render_fishbone_diagram_chart(options: FishboneDiagramOptions, output_path: str):
+    render_chart('fishbone-diagram', options, output_path)
+
+
+def render_flow_diagram_chart(options: FlowDiagramOptions, output_path: str):
+    render_chart('flow-diagram', options, output_path)
+
+
+def render_funnel_chart(options: FunnelChartOptions, output_path: str):
+    render_chart('funnel', options, output_path)
+
+
+def render_histogram_chart(options: HistogramOptions, output_path: str):
+    render_chart('histogram', options, output_path)
+
+
+def render_line_chart(options: LineChartOptions, output_path: str):
+    render_chart('line', options, output_path)
+
+
+def render_liquid_chart(options: LiquidChartOptions, output_path: str):
+    render_chart('liquid', options, output_path)
+
+
+def render_mind_map_chart(options: MindMapOptions, output_path: str):
+    render_chart('mind-map', options, output_path)
+
+
+def render_network_graph_chart(options: NetworkGraphOptions, output_path: str):
+    render_chart('network-graph', options, output_path)
+
+
+def render_organization_chart(options: OrganizationChartOptions, output_path: str):
+    render_chart('organization-chart', options, output_path)
+
+
+def render_path_map_chart(options: PathMapOptions, output_path: str):
+    render_chart('path-map', options, output_path)
+
+
+def render_pie_chart(options: PieChartOptions, output_path: str):
+    render_chart('pie', options, output_path)
+
+
+def render_pin_map_chart(options: PinMapOptions, output_path: str):
+    render_chart('pin-map', options, output_path)
+
+
+def render_radar_chart(options: RadarChartOptions, output_path: str):
+    render_chart('radar', options, output_path)
+
+
+def render_sankey_chart(options: SankeyChartOptions, output_path: str):
+    render_chart('sankey', options, output_path)
+
+
+def render_scatter_chart(options: ScatterChartOptions, output_path: str):
+    render_chart('scatter', options, output_path)
+
+
+def render_treemap_chart(options: TreemapChartOptions, output_path: str):
+    render_chart('treemap', options, output_path)
+
+
+def render_venn_chart(options: VennChartOptions, output_path: str):
+    render_chart('venn', options, output_path)
+
+
+def render_violin_chart(options: ViolinPlotOptions, output_path: str):
+    render_chart('violin', options, output_path)
+
+
+def render_word_cloud_chart(options: WordCloudChartOptions, output_path: str):
+    render_chart('word-cloud', options, output_path)

@@ -20,7 +20,7 @@ def main():
 
     try:
         process = subprocess.run(
-            ['./gpt-vis-cli', json_options],
+            ['npx', '-y', 'gpt-vis-cli', json_options],
             capture_output=True,
             check=True
         )
@@ -28,7 +28,7 @@ def main():
             f.write(process.stdout)
         print(f"Visualization saved to {output_path}")
     except FileNotFoundError:
-        print(f"Error: gpt-vis-cli not found at gpt-vis-cli")
+        print("Error: npx command not found. Please ensure Node.js and npm are installed and in your PATH.")
         sys.exit(1)
     except subprocess.CalledProcessError as e:
         print(f"Error executing gpt-vis-cli: {e}")
